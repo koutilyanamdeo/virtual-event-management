@@ -3,7 +3,9 @@ const eventModel = require('../models/eventsModel');
 const createEvent = (req, res) => {
     const { organiser ,title , description, date, time } = req.body;
     const {userId,role} = req.user;
-
+if(role !== 'organiser'){
+    return res.status(403).json({ message: 'Only organisers can create events' });
+}
     if (!organiser || !title || !description || !date || !time) {
         return res.status(400).json({ message: 'All fields are required' });
     }
