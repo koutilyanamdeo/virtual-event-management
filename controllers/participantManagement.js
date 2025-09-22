@@ -1,13 +1,13 @@
 const eventModel = require("../models/eventsModel");
 const nodeMailer = require("nodemailer");
-
+const password = process.env.GMAIl_PASSWORD;
 
 const sendEmail = (to, subject, name) => {
     const transporter = nodeMailer.createTransport({
         service: 'gmail',
         auth: {
-            user: 'koutilya.namdeo888@gmail.com',
-            pass: 'Gauruv@1209'
+            user: 'koutilyanamdeo888@gmail.com',
+            pass: password
         }
     });
 
@@ -44,7 +44,7 @@ const participantManagement = (req, res) => {
     }
 
     event.participants.push(userId);
-    console.log(req.user.email);
+    // console.log(req.user.email);
     sendEmail(req.user.email, `Registration Successful for ${event.title}`, req.user.name);
     res.status(200).json({ message: 'User registered for the event successfully' });
     // Here you would typically update the event in a database
