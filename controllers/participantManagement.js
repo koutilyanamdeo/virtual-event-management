@@ -44,6 +44,7 @@ const participantManagement = (req, res) => {
     }
 
     event.participants.push(userId);
+    console.log(req.user.email);
     sendEmail(req.user.email, `Registration Successful for ${event.title}`, req.user.name);
     res.status(200).json({ message: 'User registered for the event successfully' });
     // Here you would typically update the event in a database
