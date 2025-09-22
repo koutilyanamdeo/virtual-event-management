@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const SALT_ROUNDS = require('dotenv').config();
 const saltRounds = parseInt(process.env.SALT_ROUNDS);
-const secretKey = process.env.SECRET_KEY;
+const secretKey = process.env.JWT_SECRET || 'VIRTUAL_EVENT_MANAGEMENT';
 
 function validateEmail(email) {
   const regex = /^(?=.*[a-zA-Z])[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
