@@ -2,7 +2,7 @@ const eventModel = require("../models/eventsModel");
 const nodeMailer = require("nodemailer");
 const password = process.env.GMAIl_PASSWORD;
 
-const sendEmail = (to, subject, name) => {
+const sendEmail = async (to, subject, name) => {
     const transporter = nodeMailer.createTransport({
         service: 'gmail',
         auth: {
@@ -12,7 +12,7 @@ const sendEmail = (to, subject, name) => {
     });
 
     const mailOptions = {
-        from: 'koutilya.namdeo888@gmail.com',
+        from: 'koutilyanamdeo888@gmail.com',
         to:to,
         subject: subject,
         html: `<h1>${subject}</h1><p>You have successfully registered for the event.</p>`
